@@ -30,7 +30,7 @@ module.enable = function(self)
   search.icon:SetAllPoints(search.button)
 
   ShaguTweaks.HookScript(ContainerFrame1, "OnShow", function()
-   if this:GetID() == 0 then search:Show() else search:Hide() end
+    if this:GetID() == 0 then search:Show() else search:Hide() end
   end)
 
   local enable = function()
@@ -65,11 +65,14 @@ module.enable = function(self)
 
           if button then
             local slot = button and button:GetID()
-            local link = GetContainerItemLink(bag, slot)
-            button:SetAlpha(.25)
+            local _, count = GetContainerItemInfo(bag, slot)
+            if count then
+              local link = GetContainerItemLink(bag, slot)
+              button:SetAlpha(.25)
 
-            local item = link and string.sub(link, string.find(link, "%[")+1, string.find(link, "%]")-1) or ""
-            if strfind(strlower(item), text, 1, true) then button:SetAlpha(1) end
+              local item = link and string.sub(link, string.find(link, "%[")+1, string.find(link, "%]")-1) or ""
+              if strfind(strlower(item), text, 1, true) then button:SetAlpha(1) end
+            end
           end
         end
       end
