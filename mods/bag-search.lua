@@ -29,6 +29,10 @@ module.enable = function(self)
   search.icon = search.button:CreateTexture(nil, "OVERLAY")
   search.icon:SetAllPoints(search.button)
 
+  ShaguTweaks.HookScript(ContainerFrame1, "OnShow", function()
+   if this:GetID() == 0 then search:Show() else search:Hide() end
+  end)
+
   local enable = function()
     search.icon:SetTexture("Interface\\Buttons\\UI-Panel-MinimizeButton-Up")
     search:SetAlpha(1)
