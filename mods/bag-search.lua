@@ -62,6 +62,7 @@ module.enable = function(self)
 
         for j = 1, MAX_CONTAINER_ITEMS do
           local button = _G[name.."Item"..j]
+          local texture = _G[button:GetName().."IconTexture"]
 
           if button then
             local slot = button and button:GetID()
@@ -69,9 +70,13 @@ module.enable = function(self)
             if count then
               local link = GetContainerItemLink(bag, slot)
               button:SetAlpha(.25)
+              texture:SetDesaturated(1)
 
               local item = link and string.sub(link, string.find(link, "%[")+1, string.find(link, "%]")-1) or ""
-              if strfind(strlower(item), text, 1, true) then button:SetAlpha(1) end
+              if strfind(strlower(item), text, 1, true) then
+                button:SetAlpha(1)
+                texture:SetDesaturated(0)
+              end
             end
           end
         end
@@ -82,12 +87,17 @@ module.enable = function(self)
     if BankFrame:IsVisible() then
       for i = 1, 28 do
         local button = _G["BankFrameItem"..i]
+        local texture = _G[button:GetName().."IconTexture"]
         if button then
           local link = GetContainerItemLink(-1, i)
           button:SetAlpha(.25)
+          texture:SetDesaturated(1)
 
           local item = link and string.sub(link, string.find(link, "%[")+1, string.find(link, "%]")-1) or ""
-          if strfind(strlower(item), text, 1, true) then button:SetAlpha(1) end
+          if strfind(strlower(item), text, 1, true) then
+            button:SetAlpha(1)
+            texture:SetDesaturated(0)
+          end
         end
       end
     end
