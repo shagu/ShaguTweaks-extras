@@ -66,17 +66,15 @@ module.enable = function(self)
 
           if button then
             local slot = button and button:GetID()
-            local _, count = GetContainerItemInfo(bag, slot)
-            if count then
-              local link = GetContainerItemLink(bag, slot)
-              button:SetAlpha(.25)
-              texture:SetDesaturated(1)
 
-              local item = link and string.sub(link, string.find(link, "%[")+1, string.find(link, "%]")-1) or ""
-              if strfind(strlower(item), text, 1, true) then
-                button:SetAlpha(1)
-                texture:SetDesaturated(0)
-              end
+            local link = GetContainerItemLink(bag, slot)
+            button:SetAlpha(.25)
+            texture:SetDesaturated(1)
+
+            local item = link and string.sub(link, string.find(link, "%[")+1, string.find(link, "%]")-1) or ""
+            if strfind(strlower(item), text, 1, true) then
+              button:SetAlpha(1)
+              texture:SetDesaturated(0)
             end
           end
         end
