@@ -77,6 +77,8 @@ For a detailed view of what's new and improved, check out the feature list below
 
 - **Macro Tweaks**  
   *Add /equip command to macros, remove #showtooltip from chat and hide macro commands from history.*
+  *Add /equipoff command to macros, so you can equip offhand weapon*
+  
 
 
 ### Raid
