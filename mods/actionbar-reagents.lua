@@ -22,6 +22,8 @@ module.enable = function(self)
   local reagentcounter = CreateFrame("Frame", "ShaguTweaksReagentCount", UIParent)
   reagentcounter:RegisterEvent("PLAYER_ENTERING_WORLD")
   reagentcounter:RegisterEvent("ACTIONBAR_SLOT_CHANGED")
+  reagentcounter:RegisterEvent("ACTIONBAR_PAGE_CHANGED")
+  reagentcounter:RegisterEvent("UPDATE_BONUS_ACTIONBAR")
   reagentcounter:RegisterEvent("BAG_UPDATE")
 
   reagentcounter:SetScript("OnEvent", function()
